@@ -16,21 +16,21 @@ public class Routes {
     @Bean
     public RouterFunction<ServerResponse> productServiceRoute(){
         return GatewayRouterFunctions.route("product_service")
-                .route(GatewayRequestPredicates.path("/api/product"), HandlerFunctions.http())
+                .route(GatewayRequestPredicates.path("/rest/api/product/**"), HandlerFunctions.http())
                 .before(BeforeFilterFunctions.uri("http://localhost:8080"))
                 .build();
     }
     @Bean
     public RouterFunction<ServerResponse> orderServiceRoute() {
         return GatewayRouterFunctions.route("order_service")
-                .route(GatewayRequestPredicates.path("/api/order"), HandlerFunctions.http())
+                .route(GatewayRequestPredicates.path("/rest/api/order/**"), HandlerFunctions.http())
                 .before(BeforeFilterFunctions.uri("http://localhost:8081"))
                 .build();
     }
     @Bean
     public RouterFunction<ServerResponse> inventoryServiceRoute(){
         return GatewayRouterFunctions.route("inventory_service")
-                .route(GatewayRequestPredicates.path("/api/inventory"), HandlerFunctions.http())
+                .route(GatewayRequestPredicates.path("/rest/api/inventory/**"), HandlerFunctions.http())
                 .before(BeforeFilterFunctions.uri("http://localhost:8082"))
                 .build();
     }
